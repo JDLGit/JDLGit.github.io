@@ -238,7 +238,7 @@ treeJSON = d3.json("flare.json", function(error, treeData) {
                 if (index > -1) {
                     draggingNode.parent.children.splice(index, 1);
                 }
-                if (typeof selectedNode.children !== 'undefined' || typeof selectedNode._children !== 'undefined') {
+                if ( (typeof selectedNode.children !== 'undefined' && selectedNode.children !== null) || (typeof selectedNode._children !== 'undefined' && selectedNode._children !== null) ) {
                     if (typeof selectedNode.children !== 'undefined') {
                         selectedNode.children.push(draggingNode);
                     } else {
