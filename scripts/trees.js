@@ -54,7 +54,12 @@ treeJSON = d3.json("scripts/flare.json", function(error, treeData) {
     }
   }
   //JDL
+  var zoom = d3.zoom().scaleExtent([0.1, 3]).on("zoom", zoomed);
+      svg.call(zoom);
 
+  function zoomed() {
+    svg.attr("transform", d3.event.transform);
+  }
   //JDL
   function update(source) {
 
