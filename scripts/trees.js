@@ -1,4 +1,4 @@
-var treeData = d3.json("flare.json", function(error, treeData) {
+var treeData = d3.json("https://jdlgit.github.io/scripts/flare.json", function(error, treeData) {
   console.log(treeData);
 });
 //
