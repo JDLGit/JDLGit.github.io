@@ -1,38 +1,32 @@
 treeJSON = d3.json("scripts/flare.json", function(error, treeData) {
 
   // http://www.tutorialsteacher.com/d3js/loading-data-from-file-in-d3js
-  /*
-  var treeData =
-    {
-      "name": "Top Level",
-      "children": [
-        {
-          "name": "Level 2: A",
-          "children": [
-            { "name": "Son of A" },
-            { "name": "Daughter of A" }
-          ]
-        },
-        { "name": "Level 2: B" }
-      ]
-    };
-  */
 
   // Set the dimensions and margins of the diagram
-  var margin = {top: 20, right: 90, bottom: 30, left: 90},
-      width = 960 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
-
+  //JDL
+  //var margin = {top: 20, right: 90, bottom: 30, left: 90},
+  //    width = 960 - margin.left - margin.right,
+  //    height = 500 - margin.top - margin.bottom;
+  var width = $(document).width();
+  var height = $(document).height();
+  //JDL
 
   // append the svg object to the body of the page
   // appends a 'group' element to 'svg'
   // moves the 'group' element to the top left margin
+  //var svg = d3.select("body").append("svg")
+  //    .attr("width", width + margin.right + margin.left)
+  //    .attr("height", height + margin.top + margin.bottom)
+  //  .append("g")
+  //    .attr("transform", "translate("
+  //          + margin.left + "," + margin.top + ")");
+  var margin = {top: 20, right: 90, bottom: 30, left: 90}
   var svg = d3.select("body").append("svg")
       .attr("width", width + margin.right + margin.left)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate("
-            + margin.left + "," + margin.top + ")");
+              + margin.left + "," + margin.top + ")");
 
   var i = 0,
       duration = 750,
@@ -59,7 +53,9 @@ treeJSON = d3.json("scripts/flare.json", function(error, treeData) {
       d.children = null
     }
   }
+  //JDL
 
+  //JDL
   function update(source) {
 
     // Assigns the x and y position for the nodes
