@@ -25,8 +25,7 @@ treeJSON = d3.json("scripts/flare.json", function(error, treeData) {
       .attr("width", width + margin.right + margin.left)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
-      .attr("transform", "translate("
-              + margin.left + "," + margin.top + ")");
+      .attr("transform", "translate("+ margin.left + "," + margin.top + ")");
 
   var i = 0,
       duration = 750,
@@ -41,7 +40,7 @@ treeJSON = d3.json("scripts/flare.json", function(error, treeData) {
   root.y0 = 0;
 
   // Collapse after the second level
-  //root.children.forEach(collapse); //JDL
+  root.children.forEach(collapse);
 
   update(root);
 
@@ -54,12 +53,15 @@ treeJSON = d3.json("scripts/flare.json", function(error, treeData) {
     }
   }
   //JDL
-  var zoom = d3.zoom().scaleExtent([0.1, 3]).on("zoom", zoomed);
-      svg.call(zoom);
+  function zoom() {
+    svg.attr("transform", d3.event.transform)
+  };
 
-  function zoomed() {
-    svg.attr("transform", d3.event.transform);
-  }
+  var zoomListener = d3.zoom().scaleExtent([0.3, 3]).on("zoom", zoom);
+  svg.call(zoomListener)
+  // define the baseSvg, attaching a class for styling and the zoomListener
+
+
   //JDL
   function update(source) {
 
@@ -200,6 +202,7 @@ treeJSON = d3.json("scripts/flare.json", function(error, treeData) {
         }
       update(d);
     }
+
   }
 
 });
